@@ -1,4 +1,14 @@
 import styles from "./Login.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import {useNavigate} from "react-router-dom";
+
+import { loginSchema } from "../../utils/loginSchema";
+import AuthService from "../../services/AuthService";
+
+import { loginSuccess } from "../../redux/slices/authSlice";
+
+import {useAppDispatch} from "../../hooks/useAppDispatch";
 
 import {
 
@@ -13,22 +23,58 @@ import type {
 } from "../../types/LoginRequest";
 
 function Login(){
+    const dispatch=useAppDispatch();
+    const navigate=useNavigate();
 
-    const {
+const {
 
-        register,
+    register,
 
-        handleSubmit,
+    handleSubmit,
 
-        formState:{errors}
+    formState:{errors}
 
-    }=useForm<LoginRequest>();
+}=useForm<LoginRequest>({
 
-    const onSubmit=(data:LoginRequest)=>{
+    resolver:yupResolver(loginSchema)
 
-        console.log(data);
+});
+  const onSubmit = async (
 
-    };
+    data: LoginRequest
+
+) => {
+
+    try {
+
+        const response =
+
+            await AuthService.login(data);
+
+        console.log(response.data);
+
+        dispatch(
+
+loginSuccess({
+
+token:response.data.token,
+
+username:response.data.user.username
+
+})
+
+);
+navigate("/dashboard");
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+};
 
     return(
 
