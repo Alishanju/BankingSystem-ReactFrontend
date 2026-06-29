@@ -1,42 +1,36 @@
 import {
 
-    BrowserRouter,
+BrowserRouter,
 
-    Routes,
+Routes,
 
-    Route,
+Route
 
 } from "react-router-dom";
 
-import MainLayout from "../layouts/MainLayout";
+import Login from "../features/authentication/Login";
 
-import Dashboard from "../pages/Dashboard/Dashboard";
+function AppRoutes(){
 
-function AppRoutes() {
+return(
 
-    return (
+<BrowserRouter>
 
-        <BrowserRouter>
+<Routes>
 
-            <Routes>
+<Route
 
-                <Route element={<MainLayout />}>
+path="/"
 
-                    <Route
+element={<Login/>}
 
-                        path="/"
+/>
 
-                        element={<Dashboard />}
+</Routes>
 
-                    />
+</BrowserRouter>
 
-                </Route>
-
-            </Routes>
-
-        </BrowserRouter>
-
-    );
+);
 
 }
 
