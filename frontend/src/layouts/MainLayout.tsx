@@ -1,32 +1,33 @@
-import { Outlet } from "react-router-dom";
-
 import Header from "../components/layout/Header/Header";
 import Sidebar from "../components/layout/Sidebar/Sidebar";
 import Footer from "../components/layout/Footer/Footer";
+import { Outlet } from "react-router-dom";
 
-import "./MainLayout.scss";
+import styles from "./MainLayout.module.scss";
+import Navbar from "../components/layout/Navbar/Navbar";
 
 function MainLayout() {
 
     return (
 
-        <div className="app">
+        <div className={styles.appContainer}>
 
-            <Header/>
+            <Header />
+              <Navbar />
 
-            <div className="main-content">
+            <div className={styles.bodyContainer}>
 
-                <Sidebar/>
+                <Sidebar />
 
-                <section className="page">
+                <main className={styles.content}>
 
-                    <Outlet/>
+                    <Outlet />
 
-                </section>
+                </main>
 
             </div>
 
-            <Footer/>
+            <Footer />
 
         </div>
 

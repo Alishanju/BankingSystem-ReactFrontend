@@ -1,27 +1,60 @@
-import "./Sidebar.scss";
+import { NavLink } from "react-router-dom";
+import styles from "./Sidebar.module.scss";
 
-function Sidebar() {
+const Sidebar = () => {
 
     return (
 
-        <aside className="sidebar">
+        <aside className={styles.sidebar}>
 
-            <ul>
+            <h2 className={styles.logo}>
+                Banking
+            </h2>
 
-                <li>Dashboard</li>
+            <nav>
 
-                <li>Customers</li>
+                <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                        isActive ? styles.active : ""
+                    }
+                >
+                    Dashboard
+                </NavLink>
 
-                <li>Transactions</li>
+                <NavLink
+                    to="/customers"
+                    className={({ isActive }) =>
+                        isActive ? styles.active : ""
+                    }
+                >
+                    Customers
+                </NavLink>
 
-                <li>Profile</li>
+                <NavLink
+                    to="/transactions"
+                    className={({ isActive }) =>
+                        isActive ? styles.active : ""
+                    }
+                >
+                    Transactions
+                </NavLink>
 
-            </ul>
+                <NavLink
+                    to="/settings"
+                    className={({ isActive }) =>
+                        isActive ? styles.active : ""
+                    }
+                >
+                    Settings
+                </NavLink>
+
+            </nav>
 
         </aside>
 
     );
 
-}
+};
 
 export default Sidebar;

@@ -1,52 +1,56 @@
-import {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-BrowserRouter,
-
-Routes,
-
-Route
-
-} from "react-router-dom";
-
-import Login from "../features/authentication/Login";
-
-import Dashboard from "../pages/DashBoard/DashBoard";
 import MainLayout from "../layouts/MainLayout";
 
-function AppRoutes(){
+import Login from "../features/authentication/Login";
+import Dashboard from "../pages/DashBoard/DashBoard";
+import Customers from "../pages/Customers/Customers";
+import Transactions from "../pages/Transactions/Transactions";
+import Settings from "../pages/Settings/Settings";
+import ProtectedRoute from "./ProtectedRoute";
 
-return(
+function AppRoutes() {
+    return (
+        <BrowserRouter>
+            <Routes>
 
-<BrowserRouter>
+                <Route
+                    path="/"
+                    element={<Login />}
+                />
+                 <Route
+        element={<ProtectedRoute />}
+    >
 
-<Routes>
 
-<Route
+                <Route element={<MainLayout />}>
 
-path="/"
+                    <Route
+                        path="/dashboard"
+                        element={<Dashboard />}
+                    />
 
-element={<Login/>}
+                    <Route
+                        path="/customers"
+                        element={<Customers />}
+                    />
 
-/>
-            <Route
-                element={<MainLayout />}
-            >
+                    <Route
+                        path="/transactions"
+                        element={<Transactions />}
+                    />
 
-<Route
+                    <Route
+                        path="/settings"
+                        element={<Settings />}
+                    />
 
-path="/dashboard"
+                </Route>
+                </Route>
 
-element={<Dashboard/>}
-
-/>
-</Route>
-
-</Routes>
-
-</BrowserRouter>
-
-);
-
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default AppRoutes;

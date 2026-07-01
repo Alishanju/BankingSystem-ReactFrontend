@@ -19,6 +19,9 @@ class AuthService{
         request:LoginRequest
 
     ){
+          console.log("Login Request");
+
+    console.log(request);
 
         return api.post<LoginResponse>(
 

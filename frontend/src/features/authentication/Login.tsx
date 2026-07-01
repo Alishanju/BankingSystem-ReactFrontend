@@ -4,9 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {useNavigate} from "react-router-dom";
 
 import { loginSchema } from "../../utils/loginSchema";
-import AuthService from "../../services/AuthService";
-
-import { loginSuccess } from "../../redux/slices/authSlice";
 
 import {useAppDispatch} from "../../hooks/useAppDispatch";
 
@@ -21,10 +18,13 @@ import type {
     LoginRequest
 
 } from "../../types/LoginRequest";
+import { loginUser } from "../../redux/thunks/authThunk";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 function Login(){
     const dispatch=useAppDispatch();
     const navigate=useNavigate();
+    const{loading,error}=useAppSelector(state=>state.auth);
 
 const {
 
@@ -39,42 +39,63 @@ const {
     resolver:yupResolver(loginSchema)
 
 });
-  const onSubmit = async (
+
+const onSubmit = async (
 
     data: LoginRequest
 
 ) => {
 
-    try {
+    const result = await dispatch(
 
-        const response =
+        loginUser(data)
 
-            await AuthService.login(data);
+    );
 
-        console.log(response.data);
+    if (loginUser.fulfilled.match(result)) {
 
-        dispatch(
-
-loginSuccess({
-
-token:response.data.token,
-
-username:response.data.user.username
-
-})
-
-);
-navigate("/dashboard");
-
-    }
-
-    catch(error){
-
-        console.error(error);
+        navigate("/dashboard");
 
     }
 
 };
+
+//   const onSubmit = async (
+
+//     data: LoginRequest
+
+// ) => {
+
+//     try {
+
+//         const response =
+
+//             await AuthService.login(data);
+
+//         console.log(response.data);
+
+//         dispatch(
+
+// loginSuccess({
+
+// token:response.data.token,
+
+// username:response.data.user.username
+
+// })
+
+// );
+// navigate("/dashboard");
+
+//     }
+
+//     catch(error){
+
+//         console.error(error);
+
+//     }
+
+// };
 
     return(
 
@@ -118,17 +139,43 @@ navigate("/dashboard");
 
                 />
 
-                <p>
+             {
 
-                    {errors.password?.message}
+error && (
 
-                </p>
+<p>
 
-                <button>
+{error}
 
-                    Login
+</p>
 
-                </button>
+)
+
+}
+
+                <button
+
+type="submit"
+
+disabled={loading}
+
+>
+
+{
+
+loading
+
+?
+
+"Signing In..."
+
+:
+
+"Login"
+
+}
+
+</button>
 
             </form>
 
