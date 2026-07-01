@@ -45,7 +45,7 @@ return{
 
 totalCustomers:
 
-customers.data.length,
+customers.data.content.length,
 
 totalTransactions:
 
