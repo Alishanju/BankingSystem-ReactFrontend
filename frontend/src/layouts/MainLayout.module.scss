@@ -1,0 +1,23 @@
+.appContainer {
+
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.bodyContainer {
+
+    display: flex;
+    flex: 1;
+
+}
+
+.content {
+
+    flex: 1;
+    padding: 24px;
+    background: #f5f6fa;
+    overflow-y: auto;
+
+}

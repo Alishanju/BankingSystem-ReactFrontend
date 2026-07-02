@@ -1,0 +1,14 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.footer{
+
+    height:55px;
+
+    background:$primary;
+
+    color:$white;
+
+    @include flex-center;
+
+}

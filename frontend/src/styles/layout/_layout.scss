@@ -1,0 +1,37 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.app-container{
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.header{
+
+    height:70px;
+
+    background:$primary;
+
+    color:white;
+
+   @include flex-center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.content{
+
+    flex:1;
+
+    padding:25px;
+    
+
+}
