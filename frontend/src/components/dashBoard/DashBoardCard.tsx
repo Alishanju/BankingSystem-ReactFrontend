@@ -1,4 +1,4 @@
-import styles from "./DashboardCard.module.scss";
+import styles from "./DashBoardCard.module.scss";
 
 interface Props {
 
