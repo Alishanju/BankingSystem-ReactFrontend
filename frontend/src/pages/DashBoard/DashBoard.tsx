@@ -4,7 +4,7 @@ useEffect
 
 } from "react";
 
-import DashboardCard from "../../components/dashboard/DashBoardCard"
+import DashboardCard from "../../components/dashBoard/DashBoardCard"
 
 import {
 
