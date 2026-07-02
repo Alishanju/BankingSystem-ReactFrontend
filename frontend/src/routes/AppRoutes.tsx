@@ -4,10 +4,12 @@ import MainLayout from "../layouts/MainLayout";
 
 import Login from "../features/authentication/Login";
 import Dashboard from "../pages/DashBoard/DashBoard";
-import Customers from "../pages/Customers/Customers";
-import Transactions from "../pages/Transactions/Transactions";
-import Settings from "../pages/Settings/Settings";
+import Customers from "../features/customers/Customers";
+// import Settings from "../pages/Settings/Settings";
 import ProtectedRoute from "./ProtectedRoute";
+import Transactions
+
+from "../features/transactions/Transactions";
 
 function AppRoutes() {
     return (
@@ -40,10 +42,10 @@ function AppRoutes() {
                         element={<Transactions />}
                     />
 
-                    <Route
+                    {/* <Route
                         path="/settings"
                         element={<Settings />}
-                    />
+                    /> */}
 
                 </Route>
                 </Route>

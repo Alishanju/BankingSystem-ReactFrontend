@@ -40,14 +40,14 @@ const Sidebar = () => {
                     Transactions
                 </NavLink>
 
-                <NavLink
+                {/* <NavLink
                     to="/settings"
                     className={({ isActive }) =>
                         isActive ? styles.active : ""
                     }
                 >
                     Settings
-                </NavLink>
+                </NavLink> */}
 
             </nav>
 

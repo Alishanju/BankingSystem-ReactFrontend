@@ -1,11 +1,11 @@
 import api from "../api/axios";
 
 import type { Customer } from "../types/Customer";
-import type {
+// import type {
 
-PageResponse
+// PageResponse
 
-} from "../types/PageResponse";
+// } from "../types/PageResponse";
 
 class CustomerService {
 
@@ -13,7 +13,7 @@ class CustomerService {
 
      return api.get<
 
-PageResponse<Customer>
+Customer[]
 
 >(
 
@@ -23,6 +23,50 @@ PageResponse<Customer>
 
 
     }
+    addCustomer(request:any){
+
+        return api.post(
+
+            "/api/customers",
+
+            request
+
+        );
+
+    }
+
+    updateCustomer(
+
+        id:number,
+
+        request:any
+
+    ){
+
+        return api.put(
+
+            `/api/customers/${id}`,
+
+            request
+
+        );
+
+    }
+
+    deleteCustomer(
+
+        id:number
+
+    ){
+
+        return api.delete(
+
+            `/api/customers/${id}`
+
+        );
+
+    }
+
 
 }
 

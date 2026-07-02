@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {useNavigate} from "react-router-dom";
 
 import { loginSchema } from "../../utils/loginSchema";
+import AuthService from "../../services/AuthService";
+
 
 import {useAppDispatch} from "../../hooks/useAppDispatch";
 

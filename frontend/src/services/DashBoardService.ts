@@ -45,18 +45,18 @@ return{
 
 totalCustomers:
 
-customers.data.content.length,
+customers.data.length,
 
 totalTransactions:
 
-transactions.data.totalElements,
+transactions.data.length,
 
 customerServiceStatus:"UP",
 
 transactionServiceStatus:"UP",
 recentTransactions:
 
-transactions.data.content.slice(
+transactions.data.slice(
 
 0,
 

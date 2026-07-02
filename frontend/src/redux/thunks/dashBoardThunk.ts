@@ -6,7 +6,7 @@ export const fetchDashboard = createAsyncThunk(
 
     "dashboard/load",
 
-    async () => {
+    async (_, thunkAPI) => {
 
         try {
             console.log("dashboardThunk");
